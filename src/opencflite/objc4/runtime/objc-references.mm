@@ -145,15 +145,15 @@ namespace objc_references_support {
     };
 
 #if TARGET_OS_WIN32
-    typedef hash_map<void *, ObjcAssociation> ObjectAssociationMap;
-    typedef hash_map<void *, ObjectAssociationMap *> AssociationsHashMap;
+    typedef unordered_map<void *, ObjcAssociation> ObjectAssociationMap;
+    typedef unordered_map<void *, ObjectAssociationMap *> AssociationsHashMap;
 #else
     class ObjectAssociationMap : public std::map<void *, ObjcAssociation, ObjectPointerLess, ObjcAllocator<std::pair<void * const, ObjcAssociation> > > {
     public:
         void *operator new(size_t n) { return ::_malloc_internal(n); }
         void operator delete(void *ptr) { ::_free_internal(ptr); }
     };
-    typedef hash_map<void *, ObjectAssociationMap *, ObjcPointerHash, ObjcPointerEqual, ObjcAllocator<void *> > AssociationsHashMap;
+    typedef unordered_map<void *, ObjectAssociationMap *, ObjcPointerHash, ObjcPointerEqual, ObjcAllocator<void *> > AssociationsHashMap;
 #endif
 }
 

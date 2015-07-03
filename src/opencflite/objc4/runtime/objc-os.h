@@ -130,7 +130,7 @@ static inline void ARRSpinLockUnlock(ARRSpinLock *l)
 #       include <vector>
 #       include <algorithm>
         using namespace std;
-#       include <ext/hash_map>
+#       include <ext/unordered_map>
         using namespace __gnu_cxx;
 #   endif
 
@@ -170,7 +170,7 @@ static inline void ARRSpinLockUnlock(ARRSpinLock *l)
 #       include <vector>
 #       include <algorithm>
         using namespace std;
-#       include <hash_map>
+#       include <unordered_map>
         using namespace stdext;
 #       define __BEGIN_DECLS extern "C" {
 #       define __END_DECLS   }

@@ -77,7 +77,7 @@ static int isnan (double d) {
 #endif /* _MSC_VER */
 
 #include <direct.h>
-#if defined(_MSC_VER) || defined(__MINGW32__)
+#if (defined(_MSC_VER) && _MSC_VER < 1900) || defined(__MINGW32__)
 #define mkdir(p,m) _mkdir(p)
 #define snprintf _snprintf
 #if _MSC_VER < 1500

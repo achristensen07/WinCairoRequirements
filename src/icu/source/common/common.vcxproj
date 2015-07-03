@@ -106,6 +106,7 @@
       </DataExecutionPrevention>
       <ModuleDefinitionFile>
       </ModuleDefinitionFile>
+      <AdditionalOptions>/FORCE:MULTIPLE %(AdditionalOptions)</AdditionalOptions>
     </Link>
     <PostBuildEvent>
       <Command>mkdir "$(SolutionDir)include\unicode"
@@ -134,6 +135,7 @@ xcopy /Y /R "$(ProjectDir)unicode\*.h" "$(SolutionDir)include\unicode\"</Command
       </DataExecutionPrevention>
       <ModuleDefinitionFile>
       </ModuleDefinitionFile>
+      <AdditionalOptions>/FORCE:MULTIPLE %(AdditionalOptions)</AdditionalOptions>
     </Link>
     <PostBuildEvent>
       <Command>mkdir "$(SolutionDir)include\unicode"
@@ -164,6 +166,7 @@ xcopy /Y /R "$(ProjectDir)unicode\*.h" "$(SolutionDir)include\unicode\"</Command
       </DataExecutionPrevention>
       <ModuleDefinitionFile>
       </ModuleDefinitionFile>
+      <AdditionalOptions>/FORCE:MULTIPLE %(AdditionalOptions)</AdditionalOptions>
     </Link>
     <PostBuildEvent>
       <Command>mkdir "$(SolutionDir)include\unicode"
@@ -193,6 +196,7 @@ xcopy /Y /R "$(ProjectDir)unicode\*.h" "$(SolutionDir)include\unicode\"</Command
       </DataExecutionPrevention>
       <ModuleDefinitionFile>
       </ModuleDefinitionFile>
+      <AdditionalOptions>/FORCE:MULTIPLE %(AdditionalOptions)</AdditionalOptions>
     </Link>
     <PostBuildEvent>
       <Command>mkdir "$(SolutionDir)include\unicode"

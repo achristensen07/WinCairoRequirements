@@ -376,7 +376,7 @@ void IntlTest::setICU_DATA() {
 
 #if defined (U_TOPBUILDDIR)
     {
-        static char env_string[] = U_TOPBUILDDIR "data" U_FILE_SEP_STRING "out" U_FILE_SEP_STRING;
+        static char env_string[] = U_TOPBUILDDIR "data" "/" "out" "/";
         u_setDataDirectory(env_string);
         return;
     }
@@ -407,13 +407,13 @@ void IntlTest::setICU_DATA() {
             /* We found and truncated three names from the path.
              *  Now append "source\data" and set the environment
              */
-            strcpy(pBackSlash, U_FILE_SEP_STRING "data" U_FILE_SEP_STRING "out" U_FILE_SEP_STRING);
+            strcpy(pBackSlash, "/" "data" "/" "out" "/");
             u_setDataDirectory(p);     /*  p is "ICU_DATA=wherever\icu\source\data"    */
             return;
         }
         else {
             /* __FILE__ on MSVC7 does not contain the directory */
-            u_setDataDirectory(".."U_FILE_SEP_STRING".."U_FILE_SEP_STRING "data" U_FILE_SEP_STRING "out" U_FILE_SEP_STRING);
+            u_setDataDirectory("..""/""..""/" "data" "/" "out" "/");
             return;
         }
     }
@@ -1416,10 +1416,10 @@ const char* IntlTest::loadTestData(UErrorCode& err){
         const char* tdrelativepath;
 
 #if defined (U_TOPBUILDDIR)
-        tdrelativepath = "test"U_FILE_SEP_STRING"testdata"U_FILE_SEP_STRING"out"U_FILE_SEP_STRING;
+        tdrelativepath = "test""/""testdata""/""out""/";
         directory = U_TOPBUILDDIR;
 #else
-        tdrelativepath = ".."U_FILE_SEP_STRING"test"U_FILE_SEP_STRING"testdata"U_FILE_SEP_STRING"out"U_FILE_SEP_STRING;
+        tdrelativepath = "..""/""test""/""testdata""/""out""/";
         directory = pathToDataDirectory();
 #endif
 
@@ -1455,17 +1455,17 @@ const char* IntlTest::getTestDataPath(UErrorCode& err) {
 const char *IntlTest::getSourceTestData(UErrorCode& /*err*/) {
     const char *srcDataDir = NULL;
 #ifdef U_TOPSRCDIR
-    srcDataDir = U_TOPSRCDIR U_FILE_SEP_STRING"test"U_FILE_SEP_STRING"testdata"U_FILE_SEP_STRING;
+    srcDataDir = U_TOPSRCDIR "/""test""/""testdata""/";
 #else
-    srcDataDir = ".."U_FILE_SEP_STRING".."U_FILE_SEP_STRING"test"U_FILE_SEP_STRING"testdata"U_FILE_SEP_STRING;
-    FILE *f = fopen(".."U_FILE_SEP_STRING".."U_FILE_SEP_STRING"test"U_FILE_SEP_STRING"testdata"U_FILE_SEP_STRING"rbbitst.txt", "r");
+    srcDataDir = "..""/""..""/""test""/""testdata""/";
+    FILE *f = fopen("..""/""..""/""test""/""testdata""/""rbbitst.txt", "r");
     if (f) {
         /* We're in icu/source/test/intltest/ */
         fclose(f);
     }
     else {
         /* We're in icu/source/test/intltest/Platform/(Debug|Release) */
-        srcDataDir = ".."U_FILE_SEP_STRING".."U_FILE_SEP_STRING".."U_FILE_SEP_STRING".."U_FILE_SEP_STRING"test"U_FILE_SEP_STRING"testdata"U_FILE_SEP_STRING;
+        srcDataDir = "..""/""..""/""..""/""..""/""test""/""testdata""/";
     }
 #endif
     return srcDataDir;
@@ -1491,7 +1491,7 @@ const char *  IntlTest::pathToDataDirectory()
     */
 #if defined (U_TOPSRCDIR)
     {
-        fgDataDir = U_TOPSRCDIR  U_FILE_SEP_STRING "data" U_FILE_SEP_STRING;
+        fgDataDir = U_TOPSRCDIR  "/" "data" "/";
     }
 #else
 
@@ -1518,18 +1518,18 @@ const char *  IntlTest::pathToDataDirectory()
             /* We found and truncated three names from the path.
             *  Now append "source\data" and set the environment
             */
-            strcpy(pBackSlash, U_FILE_SEP_STRING "data" U_FILE_SEP_STRING );
+            strcpy(pBackSlash, "/" "data" "/" );
             fgDataDir = p;
         }
         else {
             /* __FILE__ on MSVC7 does not contain the directory */
-            FILE *file = fopen(".."U_FILE_SEP_STRING".."U_FILE_SEP_STRING "data" U_FILE_SEP_STRING "Makefile.in", "r");
+            FILE *file = fopen("..""/""..""/" "data" "/" "Makefile.in", "r");
             if (file) {
                 fclose(file);
-                fgDataDir = ".."U_FILE_SEP_STRING".."U_FILE_SEP_STRING "data" U_FILE_SEP_STRING;
+                fgDataDir = "..""/""..""/" "data" "/";
             }
             else {
-                fgDataDir = ".."U_FILE_SEP_STRING".."U_FILE_SEP_STRING".."U_FILE_SEP_STRING".."U_FILE_SEP_STRING "data" U_FILE_SEP_STRING;
+                fgDataDir = "..""/""..""/""..""/""..""/" "data" "/";
             }
         }
     }

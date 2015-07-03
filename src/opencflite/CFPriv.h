@@ -489,11 +489,7 @@ CF_EXPORT CFMessagePortRef _CFMessagePortCreateLocalEx(CFAllocatorRef allocator,
 #if TARGET_OS_MAC || TARGET_OS_EMBEDDED || TARGET_OS_IPHONE || TARGET_OS_LINUX
 #include <pthread.h>
 #else
-// Avoid including the pthread header
-#ifndef HAVE_STRUCT_TIMESPEC
-#define HAVE_STRUCT_TIMESPEC 1
-struct timespec { long tv_sec; long tv_nsec; };
-#endif
+#include <time.h>
 #endif
 
 CF_INLINE CFAbsoluteTime _CFAbsoluteTimeFromFileTimeSpec(struct timespec ts) {

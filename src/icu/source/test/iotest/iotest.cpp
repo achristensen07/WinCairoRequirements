@@ -77,7 +77,7 @@ public:
         */
     #if defined (U_TOPSRCDIR)
         {
-            fgDataDir = U_TOPSRCDIR  U_FILE_SEP_STRING "data" U_FILE_SEP_STRING;
+            fgDataDir = U_TOPSRCDIR  "/" "data" "/";
         }
     #else
 
@@ -104,18 +104,18 @@ public:
                 /* We found and truncated three names from the path.
                 *  Now append "source\data" and set the environment
                 */
-                strcpy(pBackSlash, U_FILE_SEP_STRING "data" U_FILE_SEP_STRING );
+                strcpy(pBackSlash, "/" "data" "/" );
                 fgDataDir = p;
             }
             else {
                 /* __FILE__ on MSVC7 does not contain the directory */
-                FILE *file = fopen(".."U_FILE_SEP_STRING".."U_FILE_SEP_STRING "data" U_FILE_SEP_STRING "Makefile.in", "r");
+                FILE *file = fopen("..""/""..""/" "data" "/" "Makefile.in", "r");
                 if (file) {
                     fclose(file);
-                    fgDataDir = ".."U_FILE_SEP_STRING".."U_FILE_SEP_STRING "data" U_FILE_SEP_STRING;
+                    fgDataDir = "..""/""..""/" "data" "/";
                 }
                 else {
-                    fgDataDir = ".."U_FILE_SEP_STRING".."U_FILE_SEP_STRING".."U_FILE_SEP_STRING".."U_FILE_SEP_STRING "data" U_FILE_SEP_STRING;
+                    fgDataDir = "..""/""..""/""..""/""..""/" "data" "/";
                 }
             }
         }
@@ -133,10 +133,10 @@ public:
             const char* tdrelativepath;
 
 #if defined (U_TOPBUILDDIR)
-            tdrelativepath = "test"U_FILE_SEP_STRING"testdata"U_FILE_SEP_STRING"out"U_FILE_SEP_STRING;
+            tdrelativepath = "test""/""testdata""/""out""/";
             directory = U_TOPBUILDDIR;
 #else
-            tdrelativepath = ".."U_FILE_SEP_STRING"test"U_FILE_SEP_STRING"testdata"U_FILE_SEP_STRING"out"U_FILE_SEP_STRING;
+            tdrelativepath = "..""/""test""/""testdata""/""out""/";
             directory = pathToDataDirectory();
 #endif
 
@@ -189,7 +189,7 @@ uto64(const UChar     *buffer)
 }
 
 
-U_CDECL_BEGIN
+extern "C" {
 static void U_CALLCONV DataDrivenPrintf(void)
 {
 #if !UCONFIG_NO_FORMATTING && !UCONFIG_NO_FILE_IO
@@ -353,9 +353,9 @@ static void U_CALLCONV DataDrivenPrintf(void)
     }
 #endif
 }
-U_CDECL_END
+}
 
-U_CDECL_BEGIN
+extern "C" {
 static void U_CALLCONV DataDrivenScanf(void)
 {
 #if !UCONFIG_NO_FORMATTING && !UCONFIG_NO_FILE_IO
@@ -555,9 +555,9 @@ static void U_CALLCONV DataDrivenScanf(void)
     }
 #endif
 }
-U_CDECL_END
+}
 
-U_CDECL_BEGIN
+extern "C" {
 static void U_CALLCONV DataDrivenPrintfPrecision(void)
 {
 #if !UCONFIG_NO_FORMATTING && !UCONFIG_NO_FILE_IO
@@ -682,7 +682,7 @@ static void U_CALLCONV DataDrivenPrintfPrecision(void)
     }
 #endif
 }
-U_CDECL_END
+}
 
 static void addAllTests(TestNode** root) {
     addFileTest(root);
@@ -718,7 +718,7 @@ static const char *ctest_dataOutDir()
     */
 #if defined (U_TOPBUILDDIR)
     {
-        dataOutDir = U_TOPBUILDDIR "data"U_FILE_SEP_STRING"out"U_FILE_SEP_STRING;
+        dataOutDir = U_TOPBUILDDIR "data""/""out""/";
     }
 #else
 
@@ -745,18 +745,18 @@ static const char *ctest_dataOutDir()
             /* We found and truncated three names from the path.
              *  Now append "source\data" and set the environment
              */
-            strcpy(pBackSlash, U_FILE_SEP_STRING "data" U_FILE_SEP_STRING "out" U_FILE_SEP_STRING);
+            strcpy(pBackSlash, "/" "data" "/" "out" "/");
             dataOutDir = p;
         }
         else {
             /* __FILE__ on MSVC7 does not contain the directory */
-            FILE *file = fopen(".."U_FILE_SEP_STRING".."U_FILE_SEP_STRING "data" U_FILE_SEP_STRING "Makefile.in", "r");
+            FILE *file = fopen("..""/""..""/" "data" "/" "Makefile.in", "r");
             if (file) {
                 fclose(file);
-                dataOutDir = ".."U_FILE_SEP_STRING".."U_FILE_SEP_STRING "data" U_FILE_SEP_STRING "out" U_FILE_SEP_STRING;
+                dataOutDir = "..""/""..""/" "data" "/" "out" "/";
             }
             else {
-                dataOutDir = ".."U_FILE_SEP_STRING".."U_FILE_SEP_STRING".."U_FILE_SEP_STRING "data" U_FILE_SEP_STRING "out" U_FILE_SEP_STRING;
+                dataOutDir = "..""/""..""/""..""/" "data" "/" "out" "/";
             }
         }
     }
@@ -785,7 +785,7 @@ static void ctest_setICU_DATA() {
     }
 }
 
-U_CDECL_BEGIN
+extern "C" {
 /*
  * Note: this assumes that context is a pointer to STANDARD_TEST_FILE. It would be
  * cleaner to define an acutal context with a string pointer in it and set STANDARD_TEST_FILE
@@ -802,7 +802,7 @@ static int U_CALLCONV argHandler(int arg, int /*argc*/, const char * const argv[
 
     return 0;
 }
-U_CDECL_END
+}
 
 int main(int argc, char* argv[])
 {

@@ -304,10 +304,13 @@ enum {
 
 #ifndef HAVE_STRUCT_TIMESPEC
 #define HAVE_STRUCT_TIMESPEC 1
+/*
+// Comment this out rather than defining HAVE_STRUCT_TIMESPEC in all the VS2015 projects.
 struct timespec {
         time_t tv_sec;
         long tv_nsec;
 };
+*/
 #endif /* HAVE_STRUCT_TIMESPEC */
 
 #ifndef SIG_BLOCK

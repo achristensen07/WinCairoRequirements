@@ -103,6 +103,7 @@
       </DataExecutionPrevention>
       <ModuleDefinitionFile>
       </ModuleDefinitionFile>
+      <AdditionalOptions>/FORCE:MULTIPLE %(AdditionalOptions)</AdditionalOptions>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -124,6 +125,7 @@
       </DataExecutionPrevention>
       <ModuleDefinitionFile>
       </ModuleDefinitionFile>
+      <AdditionalOptions>/FORCE:MULTIPLE %(AdditionalOptions)</AdditionalOptions>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -146,6 +148,7 @@
       </DataExecutionPrevention>
       <ModuleDefinitionFile>
       </ModuleDefinitionFile>
+      <AdditionalOptions>/FORCE:MULTIPLE %(AdditionalOptions)</AdditionalOptions>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -167,6 +170,7 @@
       </DataExecutionPrevention>
       <ModuleDefinitionFile>
       </ModuleDefinitionFile>
+      <AdditionalOptions>/FORCE:MULTIPLE %(AdditionalOptions)</AdditionalOptions>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
