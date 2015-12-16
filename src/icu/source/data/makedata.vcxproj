@@ -209,10 +209,6 @@
       <Project>{8b41752b-5a52-41e4-b7e0-07921c0cc6bf}</Project>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
-    <ProjectReference Include="..\tools\gendict\gendict.vcxproj">
-      <Project>{9d4211f7-2c77-439c-82f0-30a4e43ba569}</Project>
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-    </ProjectReference>
     <ProjectReference Include="..\tools\gennorm2\gennorm2.vcxproj">
       <Project>{c7891a65-80ab-4245-912e-5f1e17b0e6c4}</Project>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
